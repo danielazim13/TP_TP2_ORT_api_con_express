@@ -1,0 +1,22 @@
+{
+  "name": "tp_tp2_api_con_express",
+  "version": "1.0.0",
+  "description": "Trabajo Práctico 2 - API con Express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "node.js",
+    "express"
+  ],
+  "author": "Daniela Zimñiak",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
