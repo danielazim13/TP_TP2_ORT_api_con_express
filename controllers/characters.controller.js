@@ -1,6 +1,6 @@
 import services from '../services/characters.service.js'
 
-async function getCharacters (req, res) {
+const getCharacters = async (req, res) => {
     try {
         const characters = await services.getCharacters()
         res.send(characters)
@@ -9,6 +9,17 @@ async function getCharacters (req, res) {
     }
 }
 
+const getCharactersById = async (req, res) => {
+    try {
+        const {id} = req.params
+        const character = await services.getCharactersById(id)
+        res.send(character)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default {
     getCharacters,
+    getCharactersById
 }

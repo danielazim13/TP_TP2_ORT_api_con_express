@@ -12,10 +12,10 @@ async function fetchCharacters(){
     }
 }
 
-async function getCharacters() {
-    try {
-        const characters = await fetchCharacters()
-    
+const characters = await fetchCharacters()
+
+const getCharacters = () => {
+    try {    
         if(characters.length <= 0){
             return 'No hay personajes en la lista.'
         } else {
@@ -25,9 +25,19 @@ async function getCharacters() {
         console.log(error);
         throw new Error('Error al obtener los personajes')
     }
+}
 
+const getCharactersById = (id) => {
+    try {    
+        const character = characters.find((character) => character.id == id)
+        return character
+    } catch (error) {
+        console.log(error);
+        throw new Error('Error al obtener el personaje')
+    }
 }
 
 export default {
     getCharacters,
+    getCharactersById
 }
