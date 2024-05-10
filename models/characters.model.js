@@ -1,4 +1,4 @@
-async function fetchCharacters(){
+const fetchCharacters = async () => {
     try {
         const response = await fetch("https://swapi.dev/api/people/")
         const data = await response.json()
@@ -12,10 +12,9 @@ async function fetchCharacters(){
     }
 }
 
-const characters = await fetchCharacters()
-
-const getCharacters = () => {
+const getCharacters = async () => {
     try {    
+        const characters = await fetchCharacters()
         if(characters.length <= 0){
             return 'No hay personajes en la lista.'
         } else {
@@ -27,13 +26,18 @@ const getCharacters = () => {
     }
 }
 
-const getCharactersById = (id) => {
+const getCharactersById = async (id) => {
     try {    
-        const character = characters.find((character) => character.id == id)
-        return character
+        const characters = await fetchCharacters()
+        const character = characters.find((character) => {
+            const characterUrlParts = character.url.split('/');
+            const characterId = characterUrlParts[characterUrlParts.length - 2];
+            return characterId === id;
+        });
+        return character;
     } catch (error) {
         console.log(error);
-        throw new Error('Error al obtener el personaje')
+        throw new Error('Error al obtener el personaje');
     }
 }
 
