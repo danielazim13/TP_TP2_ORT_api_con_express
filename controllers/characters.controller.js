@@ -11,7 +11,7 @@ const getCharacters = async (req, res) => {
 
 const getCharactersById = async (req, res) => {
     try {
-        const {id} = req.params
+        const { id } = req.params
         const character = await services.getCharactersById(id)
         res.send(character)
     } catch (error) {
@@ -19,7 +19,18 @@ const getCharactersById = async (req, res) => {
     }
 }
 
+const getCharactersByGender = async (req, res) => {
+    try {
+        const { gender } = req.params
+        const charactersByGender = await services.getCharactersByGender(gender)
+        res.send(charactersByGender)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export default {
     getCharacters,
-    getCharactersById
+    getCharactersById,
+    getCharactersByGender
 }

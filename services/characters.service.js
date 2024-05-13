@@ -1,16 +1,22 @@
 import model from '../models/characters.model.js'
 
-const getCharacters = () => {
-    const characters = model.getCharacters()
+const getCharacters = async () => {
+    const characters = await model.getCharacters()
     return characters
 }
 
-const getCharactersById = (id) => {
-    const character = model.getCharactersById(id)
+const getCharactersById = async (id) => {
+    const character = await model.getCharactersById(id)
     return character
+}
+
+const getCharactersByGender = async (gender) => {
+    const charactersByGender = await model.getCharactersByGender(gender)
+    return charactersByGender
 }
 
 export default {
     getCharacters,
-    getCharactersById
+    getCharactersById,
+    getCharactersByGender
 }

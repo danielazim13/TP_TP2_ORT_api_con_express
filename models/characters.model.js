@@ -41,7 +41,24 @@ const getCharactersById = async (id) => {
     }
 }
 
+const getCharactersByGender = async (gender) => {
+    try {    
+        const characters = await fetchCharacters()
+        const charactersByGender = characters.filter(character => character.gender.toLowerCase() == gender.toLowerCase())
+        
+        if(charactersByGender.length <= 0){
+            return 'No hay personajes en la lista.'
+        } else {
+            return charactersByGender
+        }
+    } catch (error) {
+        console.log(error)
+        throw new Error('Error al obtener los personajes')
+    }
+}
+
 export default {
     getCharacters,
-    getCharactersById
+    getCharactersById,
+    getCharactersByGender
 }
